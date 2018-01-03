@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+  <head>
+    <!--<meta charset="UTF-8">-->
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Principled SBT</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css">
+    <link rel="stylesheet" href="plugin/reveal-run-in-terminal.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section data-markdown>
+          <script type="text/template">
+          # Principled SBT
+
+          Note:
+          good to know:
+          type s for the side deck
+          a good introduction:
+          https://muuki88.gitbooks.io/sbt-getting-started-guide
+          and sbt site ...
+          http://www.scala-sbt.org/1.x/docs
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ### Who am I?
+          ![alt text](./images/io.png "")<!-- .element: style="max-height: 300px; margin: 0px 0px 0px 0px;"-->
+
+          ![alt text](./images/nokia2.png "")<!-- .element: style="max-height: 100px; margin: 0px 0px 0px 0px;"-->
+          - GitHub [andreaTP]()
+          - Twitter [@and_prf]()
+          </script>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+            ## The name
+              - Simple Build Tool<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ## The name
+              - ~~Simple~~ Build Tool
+              - Scala Build Tool<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ## The name
+              - ~~Simple~~ Build Tool
+              - ~~Scala~~ Build Tool
+              - sbt<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            </script>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ## Concepts
+            1. Settings<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            2. Tasks<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+            3. Configurations<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+            4. Projects<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+            5. Scopes<!-- .element: style="color: white;" class="fragment" data-fragment-index="5" -->
+          </script>
+        </section>
+
+        <section
+          data-run-in-terminal="code/01-settings/build.sbt"
+          data-run-in-terminal-bin="sbt 'set myName := &quot;Andrea&quot;' 'show myName'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Settings</h2>
+        </section>
+
+        <section
+          data-run-in-terminal="code/01-settings/build.sbt"
+          data-run-in-terminal-bin="sbt 'set myName := &quot;Andrea&quot;' 'settings -V' | grep myName"
+          data-run-in-terminal-args="2"
+        >
+          <h2>Settings</h2>
+        </section>
+
+        <section
+          data-run-in-terminal="code/02-tasks/build.sbt"
+          data-run-in-terminal-bin="sbt 'set sayHello := { println(&quot;hello!&quot;) }' 'sayHello'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Tasks</h2>
+        </section>
+
+        <section
+          data-run-in-terminal="code/02-tasks/build.sbt"
+          data-run-in-terminal-bin="sbt 'set sayHello := { println(&quot;hello!&quot;) }' 'tasks -V' | grep sayHello"
+          data-run-in-terminal-args="2"
+        >
+          <h2>Tasks</h2>
+        </section>
+
+        <section
+          data-run-in-terminal="code/03-settings-tasks/build.sbt"
+          data-run-in-terminal-bin="sbt 'set myName := &quot;Andrea&quot;' 'set sayHello := { println(s&quot;hello ${myName.value}&quot;) }' 'sayHello'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Checkpoint: Settings + Tasks</h2>
+        </section>
+
+        <section
+          data-run-in-terminal="code/04-configurations/build.sbt"
+          data-run-in-terminal-bin="sbt 'libraryDependencies'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Configurations</h2>
+          <aside class="notes">
+            http://www.scala-sbt.org/1.x/docs/Advanced-Configurations-Example.html
+
+            especially used for defining classpaths
+            they come from Ivy2
+            http://ant.apache.org/ivy/history/latest-milestone/tutorial/conf.html
+          </aside>
+        </section>
+
+        <section
+          data-run-in-terminal="code/05-projects/build.sbt"
+          data-run-in-terminal-bin="sbt 'myName' 'prjA/myName'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Projects</h2>
+        </section>
+
+        <section
+          data-run-in-terminal="code/06-scopes/build.sbt"
+          data-run-in-terminal-bin="sbt 'prjA/saysomething:sayHello::sayHello'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Scopes</h2>
+          <aside class="notes">
+            this starts to be risky ...
+          </aside>
+        </section>
+
+        <section
+          data-run-in-terminal="code/07-scopes/build.sbt"
+          data-run-in-terminal-bin="sbt 'inspect myName'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Special Scopes</h2>
+          <aside class="notes">
+            Global ThisBuild
+
+            There’s a special scope component * (also called Global) for any of the scope axes.
+            There’s a special scope component ThisBuild (written as {.} in shell) for the subprojects axis only.
+
+          </aside>
+        </section>
+
+        <section
+          data-run-in-terminal="code/07-scopes/build.sbt"
+          data-run-in-terminal-bin="sbt '{.}/saysomething:sayHello::myName' '{.}/*:*::myName' '*/*:*::myName'"
+          data-run-in-terminal-args="2"
+        >
+          <h2>Special Scopes</h2>
+          <aside class="notes">
+            Global ThisBuild
+
+            There’s a special scope component * (also called Global) for any of the scope axes.
+            There’s a special scope component ThisBuild (written as {.} in shell) for the subprojects axis only.
+
+          </aside>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ## Scopes delegation
+            1. Subproject<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - Given subproject -> ThisBuild -> Global<!-- .element: style="color: white;" class="fragment" data-fragment-index="6" -->
+
+            2. Configuration<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+              - Given configuration -> ...parents -> Global<!-- .element: style="color: white;" class="fragment" data-fragment-index="5" -->
+
+            3. Task<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+              - Given task -> Global<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+
+
+            n.b.: evaluation does not carry original configuration!<!-- .element: style="color: white;" class="fragment" data-fragment-index="7" -->
+
+            Note:
+            briefly, mention that you can always check with inspect
+
+            http://www.scala-sbt.org/1.0/docs/Inspecting-Settings.html#Delegates
+            http://www.scala-sbt.org/1.0/docs/Scope-Delegation.html
+
+            Rule 1: Scope axes have the following precedence: the subproject axis, the configuration axis, and then the task axis.
+            Rule 2: Given a scope, delegate scopes are searched by substituting the task axis in the following order: the given task scoping, and then * (Global), which is non-task scoped version of the scope.
+            Rule 3: Given a scope, delegate scopes are searched by substituting the configuration axis in the following order: the given configuration, its parents, their parents and so on, and then * (Global, same as unscoped configuration axis).
+            Rule 4: Given a scope, delegate scopes are searched by substituting the subproject axis in the following order: the given subproject, ThisBuild, and then * (Global).
+            Rule 5: A delegated scoped key and its dependent settings/tasks are evaluated without carrying the original context.
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ## Meta-build
+          `project` ***directory is another build inside your build***
+          </script>
+        </section>
+
+        <section
+          data-run-in-terminal="code/08-metabuild/project/Dependencies.scala"
+          data-run-in-terminal-bin="sbt 'checkVersion'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Meta-build</h2>
+        </section>
+
+        <section
+          data-run-in-terminal="code/09-autoplugin/project/HelloPlugin.scala"
+          data-run-in-terminal-bin="sbt 'sayHello'"
+          data-run-in-terminal-args="1"
+        >
+          <h2>Auto-plugins</h2>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/reveal-run-in-terminal.js', async: true,
+          callback: function() {
+            RunInTerminal.init({defaultBin: 'node'});
+          } },
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+            // console.log("here -> "+hljs.getLanguage("scala"));
+            hljs.initHighlightingOnLoad();
+          } },
+          { src: 'plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } }
+        ]
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "reveal-run-in-terminal",
+  "version": "1.0.0",
+  "description": "Show and execute code in your presentation",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "reveal.js": "^3.3.0"
+  },
+  "scripts": {
+    "start": "node slides/app.js",
+    "build": "browserify --debug src/reveal-run-in-terminal.js > static/plugin/reveal-run-in-terminal.js"
+  }
+}
