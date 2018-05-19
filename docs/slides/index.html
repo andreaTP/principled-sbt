@@ -29,8 +29,9 @@
 
         <section data-markdown>
           <script type="text/template">
-          # Principled SBT
-
+          # Principled
+          <img style="background: #cdcdcd;border: 8px solid #380d09; border-radius: 15px;" data-src="./images/sbt-logo.svg" />
+          
           Note:
           good to know:
           type s for the side deck
@@ -41,17 +42,23 @@
           </script>
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-          ##### First things first
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+            ##### First things first
 
-          # WHY ???<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
-            
-            - no one is NOT using it<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
-            - build is code<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
-            - fight the stigma<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
-            - google doesn't help<!-- .element: style="color: white;" class="fragment" data-fragment-index="5" -->
-          </script>
+            # WHY ???<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              - no one is not using it<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - no one is talking about it<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+              - build is code<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+              - fight the stigma<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+              - google doesn't help<!-- .element: style="color: white;" class="fragment" data-fragment-index="5" -->
+            </script>
+          </section>
         </section>
 
         <section>
@@ -80,6 +87,12 @@
 
         <section data-markdown>
           <script type="text/template">
+            deep breath
+          </script>
+        </section>  
+
+        <section data-markdown>
+          <script type="text/template">
           ## Concepts
             1. Settings<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
             2. Tasks<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
@@ -91,7 +104,7 @@
 
         <section
           data-run-in-terminal="code/01-settings/build.sbt"
-          data-run-in-terminal-bin="sbt 'set myName := &quot;Andrea&quot;' 'show myName'"
+          data-run-in-terminal-bin="sbt 'set myName := &quot;Andrea&quot;' 'show myName' 'help myName'"
           data-run-in-terminal-args="1"
         >
           <h2>Settings</h2>
@@ -99,7 +112,7 @@
 
         <section
           data-run-in-terminal="code/01-settings/build.sbt"
-          data-run-in-terminal-bin="sbt 'set myName := &quot;Andrea&quot;' 'settings -V' | grep myName"
+          data-run-in-terminal-bin="sbt 'help fork'"
           data-run-in-terminal-args="2"
         >
           <h2>Settings</h2>
@@ -107,7 +120,7 @@
 
         <section
           data-run-in-terminal="code/02-tasks/build.sbt"
-          data-run-in-terminal-bin="sbt 'set sayHello := { println(&quot;hello!&quot;) }' 'sayHello'"
+          data-run-in-terminal-bin="sbt 'set sayHello := { println(&quot;hello!&quot;) }' 'sayHello' 'help sayHello'"
           data-run-in-terminal-args="1"
         >
           <h2>Tasks</h2>
@@ -115,7 +128,7 @@
 
         <section
           data-run-in-terminal="code/02-tasks/build.sbt"
-          data-run-in-terminal-bin="sbt 'set sayHello := { println(&quot;hello!&quot;) }' 'tasks -V' | grep sayHello"
+          data-run-in-terminal-bin="sbt 'help compile'"
           data-run-in-terminal-args="2"
         >
           <h2>Tasks</h2>
@@ -145,6 +158,14 @@
         </section>
 
         <section
+          data-run-in-terminal="code/04-configurations/build.sbt"
+          data-run-in-terminal-bin="sbt 'set libraryDependencies += &quot;dummy&quot; % &quot;dummy&quot; % &quot;1.0&quot; % Test' 'libraryDependencies'"
+          data-run-in-terminal-args="2"
+        >
+          <h2>Configurations</h2>
+        </section>
+
+        <section
           data-run-in-terminal="code/05-projects/build.sbt"
           data-run-in-terminal-bin="sbt 'myName' 'prjA/myName'"
           data-run-in-terminal-args="1"
@@ -168,7 +189,7 @@
           data-run-in-terminal-bin="sbt 'inspect myName'"
           data-run-in-terminal-args="1"
         >
-          <h2>Special Scopes</h2>
+          <h2>Specific Scopes</h2>
           <aside class="notes">
             Global ThisBuild
 
@@ -183,7 +204,7 @@
           data-run-in-terminal-bin="sbt '{.}/saysomething:sayHello::myName' '{.}/*:*::myName' '*/*:*::myName'"
           data-run-in-terminal-args="2"
         >
-          <h2>Special Scopes</h2>
+          <h2>Specific Scopes</h2>
           <aside class="notes">
             Global ThisBuild
 
@@ -230,7 +251,7 @@
         </section>
 
         <section
-          data-run-in-terminal="code/08-metabuild/project/Dependencies.scala"
+          data-run-in-terminal="code/09-metabuild/project/Dependencies.scala"
           data-run-in-terminal-bin="sbt 'checkVersion'"
           data-run-in-terminal-args="1"
         >
@@ -238,7 +259,7 @@
         </section>
 
         <section
-          data-run-in-terminal="code/09-autoplugin/project/HelloPlugin.scala"
+          data-run-in-terminal="code/10-autoplugin/project/HelloPlugin.scala"
           data-run-in-terminal-bin="sbt 'sayHello'"
           data-run-in-terminal-args="1"
         >

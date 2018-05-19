@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
 
-sbt 'set sayHello := { println("hello!") }' 'sayHello'
+sbt 'set sayHello := { println("hello!") }' 'sayHello' 'help sayHello'
 
 
 cd ../../../
