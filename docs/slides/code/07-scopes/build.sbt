@@ -1,7 +1,7 @@
-lazy val myName = settingKey[String]("this is my name")
-lazy val SaySomething = config("saysomething") describedAs("Group of actions to say something")
-lazy val sayHello = taskKey[Unit]("this will say hello")
+val myName = settingKey[String]("this is my name")
+val SaySomething = config("saysomething") describedAs("Group of actions to say something")
+val sayHello = taskKey[Unit]("this will say hello")
 
-myName in Global := "Foo" // (Global, Global, Global)
-myName in ThisBuild := "Bar" // (ThisBuild, Global, Global)
-myName in (ThisBuild, SaySomething, sayHello) := "BAZ"
+Global / myName := "Foo" // (Zero, Zero, Zerol)
+ThisBuild / myName := "Bar" // (ThisBuild, Zero, Zero)
+ThisBuild / SaySomething / sayHello / myName := "BAZ"

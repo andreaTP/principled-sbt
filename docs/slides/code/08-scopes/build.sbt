@@ -1,1 +1,1 @@
-lazy val prjA = project.in(file("prjA"))
+val prjA = project.in(file("prjA"))

@@ -1,1 +1,1 @@
-lazy val sayHello = taskKey[Unit]("this will say hello")
+val sayHello = taskKey[Unit]("this will say hello")

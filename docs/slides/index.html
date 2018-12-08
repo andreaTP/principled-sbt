@@ -52,11 +52,11 @@
           </section>
           <section data-markdown>
             <script type="text/template">
-              - no one is not using it<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
-              - no one is talking about it<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
-              - build is code<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
-              - fight the stigma<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
-              - google doesn't help<!-- .element: style="color: white;" class="fragment" data-fragment-index="5" -->
+              - no one is talking about it<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - build is code<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+              - fight the stigma<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+              - google doesn't help<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+              - no one is NOT using it<!-- .element: style="color: white;" class="fragment" data-fragment-index="5" -->[ (e.g.)](https://github.com/propensive/magnolia/commit/b039a653e9e90530a76aef42df9215c151c65b67)<!-- .element: style="color: white;" class="fragment" data-fragment-index="6" -->
             </script>
           </section>
         </section>
@@ -207,7 +207,7 @@
 
         <section
           data-run-in-terminal="code/07-scopes/build.sbt"
-          data-run-in-terminal-bin="sbt '{.}/saysomething:sayHello::myName' '{.}/*:*::myName' '*/*:*::myName'"
+          data-run-in-terminal-bin="sbt 'ThisBuild/saysomething:sayHello::myName' 'ThisBuild / Zero / Zero / myName' 'Zero / Zero / Zero / myName'"
           data-run-in-terminal-args="2"
         >
           <h2>Special Scopes</h2>
@@ -308,6 +308,21 @@
           [sbt docs](https://www.scala-sbt.org/1.x/docs/index.html)<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
 
           [sbt API docs](https://www.scala-sbt.org/1.1.6/api/)<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ## Upcoming
+
+          TBD
+
+           - thin client (short sbtcli demo? yes)
+           - coursier librarymanagement
+           - speed!
+           - BSP / LSP
+           - help wanted
 
           </script>
         </section>

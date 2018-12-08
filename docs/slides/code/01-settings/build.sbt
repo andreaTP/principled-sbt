@@ -1,1 +1,1 @@
-lazy val myName = settingKey[String]("this is my name")
+val myName = settingKey[String]("this is my name")
