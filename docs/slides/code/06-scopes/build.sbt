@@ -5,7 +5,7 @@ val sayHello = taskKey[Unit]("this will say hello")
 
 myName := "andrea"
 
-sayHello in (prjA, SaySomething, sayHello) := {
+prjA / SaySomething / sayHello / sayHello := {
   val name = myName.value
   println(s"hello $name".toUpperCase)
 }
